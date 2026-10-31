@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: TextKit
-  description: "Programmable SMS and phone numbers for developers. Send and receive texts, verify phone numbers, and provision numbers with one REST API. Test keys (ssms_sk_test_...) work instantly against the sandbox; live keys are enabled after a short live-access review."
+  description: "Programmable SMS and phone numbers for developers. Send and receive texts, verify phone numbers, and provision numbers with one REST API. Test keys (tk_sk_test_...) work instantly against the sandbox; live keys are enabled after a short live-access review."
   version: 1.0.0
   contact:
     url: "https://jointextkit.com"
@@ -5634,7 +5634,7 @@ paths:
     post:
       operationId: submitRegistration
       summary: "Submit a ready registration for carrier review (or resubmit after a rejection)"
-      description: "The body must carry `fees_acknowledged: true`: your acceptance of the registration fee terms (Terms §4.3). Carrier registration fees (brand, vetting, the monthly campaign fee) are separate from the per-message rate and billed at what the registry or carrier charges us; a campaign is billed for a minimum of 3 months; the fees are non-refundable, including if the registration is rejected. The acknowledgment is recorded on the filed copy with its wording, the time and your IP; without it the request is refused with 400 invalid_request (param fees_acknowledged) and nothing is filed. The first submit for a business also carries the signed business attestation; without one on file the submit answers 400 attestation_required (param attestation). The submission is then held while our team verifies the business (guidance.next_actor delivered), and filed once it is verified. Later submits for the same business details need no attestation. A business we could not verify returns the registration as rejected with reason code business_unverified; the next submit is signed again."
+      description: "The body must carry `fees_acknowledged: true`: your acceptance of the registration fee terms (Terms §4.3). Carrier registration fees (brand, vetting, the monthly campaign fee) are separate from the per-message rate and billed at what the registry or carrier charges us; a campaign is billed for a minimum of 3 months; the fees are non-refundable, including if the registration is rejected. The acknowledgment is recorded on the filed copy with its wording, the time and your IP; without it the request is refused with 400 invalid_request (param fees_acknowledged) and nothing is filed. The first submit for a business also carries the signed business attestation; without one on file the submit answers 400 attestation_required (param attestation). The submission is then held while our team verifies the business (guidance.next_actor textkit), and filed once it is verified. Later submits for the same business details need no attestation. A business we could not verify returns the registration as rejected with reason code business_unverified; the next submit is signed again."
       parameters:
         - name: id
           in: path
@@ -9743,7 +9743,7 @@ components:
     apiKey:
       type: http
       scheme: bearer
-      description: "Your API key, e.g. Authorization: Bearer ssms_sk_test_.... Keys may be restricted to scopes (messages:send, messages:read, numbers:read, numbers:write, verify, consent, lookup, webhooks, webhooks:write, customers, contacts, registrations, billing, automations, audit_logs:read, links, keys); a restricted key outside its scopes gets 403 insufficient_scope. Keys without scopes have full access."
+      description: "Your API key, e.g. Authorization: Bearer tk_sk_test_.... Keys may be restricted to scopes (messages:send, messages:read, numbers:read, numbers:write, verify, consent, lookup, webhooks, webhooks:write, customers, contacts, registrations, billing, automations, audit_logs:read, links, keys); a restricted key outside its scopes gets 403 insufficient_scope. Keys without scopes have full access."
   schemas:
     Message:
       type: object
@@ -12738,7 +12738,7 @@ components:
               type: string
               enum:
                 - you
-                - delivered
+                - textkit
                 - carriers
                 - nobody
             next_step:

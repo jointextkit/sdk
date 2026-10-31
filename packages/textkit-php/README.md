@@ -277,7 +277,7 @@ and a verification cooldown, which is policy, not a blip.
 
 ## Testing
 
-Test keys (`ssms_sk_test_...`) cost nothing and simulate: the message reaches `delivered` with `'simulated' => true` and no text is sent, except to your own verified phone.
+Test keys (`tk_sk_test_...`) cost nothing and simulate: the message reaches `delivered` with `'simulated' => true` and no text is sent, except to your own verified phone.
 `$client->isTestMode()` tells you which you have. Magic numbers and codes are
 in the [sandbox docs](https://jointextkit.com/docs/sandbox).
 

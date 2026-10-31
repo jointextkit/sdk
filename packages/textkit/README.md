@@ -343,7 +343,7 @@ it's surfaced to you with `retryAfter`.
 
 ## Testing
 
-Test keys (`ssms_sk_test_…`) cost nothing and simulate: the message reaches `delivered` with `simulated: true` and no text is sent, except to your own verified phone.
+Test keys (`tk_sk_test_…`) cost nothing and simulate: the message reaches `delivered` with `simulated: true` and no text is sent, except to your own verified phone.
 
 ```js
 sms.isTestMode; // true
@@ -392,7 +392,7 @@ TextKit was called Delivered until October 2026, and this package was
 | `npm install deliveredsms` | `npm install jointextkit` | Yes: `deliveredsms` 1.1+ re-exports this package |
 | `import { Delivered }` | `import { TextKit }` | Yes: `Delivered` / `DeliveredError` are aliases of the same classes |
 | `DELIVERED_API_KEY`, `DELIVERED_BASE_URL` | `TEXTKIT_API_KEY`, `TEXTKIT_BASE_URL` | Yes: read when the new names are unset (so are `RESMS_*`) |
-| `dsms_sk_...` keys | `ssms_sk_...` keys | Yes: old keys authenticate forever |
+| `dsms_sk_...` keys | `tk_sk_...` keys | Yes: old keys authenticate forever |
 | `https://api.deliveredsms.com` | `https://api.jointextkit.com` | No: the old host is retired and answers 410. This SDK defaults to the new one; only a hard-coded `baseUrl` needs changing |
 | `dsms-signature` header | `textkit-signature` header | Yes: every webhook carries both |
 | `deliveredsms` / `dsms` commands | `textkit` command | Yes, with the `deliveredsms` package installed |

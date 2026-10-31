@@ -7,7 +7,7 @@
  * raw API objects with no decoration.
  *
  *   npx jointextkit login                 approve in the browser; a test key lands in ~/.textkit.json
- *   npx jointextkit login --key ssms_sk_...   store a key you already have (or pipe it on stdin)
+ *   npx jointextkit login --key tk_sk_...   store a key you already have (or pipe it on stdin)
  *   npx jointextkit listen --forward-to http://localhost:3000/webhooks
  *   npx jointextkit trigger message.received
  *   npx jointextkit send --to +1... "body"            (--from is optional)
@@ -120,7 +120,7 @@ function fail(message: string): never {
 
 const KEY_SHAPE = /^(tk|ssms|dsms|resms)_sk_(test|live)_[A-Za-z0-9]{20,}$/;
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
-/** `ssms_sk_test_AbCd...`: enough to recognise a key in the console list, never the key. */
+/** `tk_sk_test_AbCd...`: enough to recognise a key in the console list, never the key. */
 const keyLabel = (key: string) => `${key.slice(0, key.search(/_(test|live)_/) + 10)}...`;
 
 function saveKey(key: string): void {
@@ -223,7 +223,7 @@ async function loginRequest<T>(path: string, body: unknown): Promise<{ status: n
 
 /** Store a key the developer already has, and show its sandbox number. */
 async function loginWithKey(key: string, flags: Flags): Promise<void> {
-  if (!KEY_SHAPE.test(key)) fail('that does not look like a TextKit key (ssms_sk_test_... or ssms_sk_live_...)');
+  if (!KEY_SHAPE.test(key)) fail('that does not look like a TextKit key (tk_sk_test_... or tk_sk_live_...)');
   saveKey(key);
   const test = /_sk_test_/.test(key);
   let sandbox: string | null = null;
@@ -472,7 +472,7 @@ async function trigger(sms: TextKit, flags: Flags, args: string[]): Promise<void
   if (!type || !TRIGGERS[type]) {
     fail(`usage: trigger <event>\n${Object.entries(TRIGGERS).map(([k, v]) => `  ${k.padEnd(20)} ${v}`).join('\n')}`);
   }
-  if (!sms.isTestMode) fail('trigger only works with a test key (ssms_sk_test_...): it never sends a real message.');
+  if (!sms.isTestMode) fail('trigger only works with a test key (tk_sk_test_...): it never sends a real message.');
   const sandbox = flags.from || (await sms.numbers.list()).data.find((n) => n.mode === 'test')?.phone_number;
   if (!sandbox) fail('no sandbox number on this account. `textkit numbers list` shows your numbers.');
   const body = words.join(' ') || 'Hello from textkit trigger';
