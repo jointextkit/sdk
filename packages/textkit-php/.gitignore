@@ -1,0 +1,13 @@
+vendor/
+composer.lock
+.phpunit.cache/
+.phpunit.result.cache
+
+# Never commit credentials or signing keys
+.env
+.env.*
+*.gpg
+*.asc
+*.key
+*.pem
+*.p12

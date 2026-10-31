@@ -1,0 +1,50 @@
+{
+  "name": "jointextkit",
+  "version": "2.10.0",
+  "description": "Official client + CLI for TextKit (jointextkit.com): SMS, phone verification, and phone numbers. Zero dependencies.",
+  "keywords": [
+    "sms",
+    "otp",
+    "phone verification",
+    "2fa",
+    "twilio alternative",
+    "sms api",
+    "ai agents"
+  ],
+  "homepage": "https://jointextkit.com",
+  "repository": { "type": "git", "url": "git+https://github.com/jointextkit/sdk.git", "directory": "packages/textkit" },
+  "bugs": { "url": "https://github.com/jointextkit/sdk/issues" },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "jointextkit": "./dist/cli.cjs",
+    "textkit": "./dist/cli.cjs"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./cli": "./dist/cli.cjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "clean": "node -e \"const{rmSync}=require('fs');rmSync('dist',{recursive:true,force:true});rmSync('dist-cjs',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node -e \"const{renameSync,rmSync,readFileSync,writeFileSync,chmodSync}=require('fs');renameSync('dist-cjs/index.js','dist/index.cjs');const cli=readFileSync('dist-cjs/cli.js','utf8').replace('require(\\\"./index\\\")','require(\\\"./index.cjs\\\")');writeFileSync('dist/cli.cjs',cli);chmodSync('dist/cli.cjs',0o755);rmSync('dist-cjs',{recursive:true,force:true})\"",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

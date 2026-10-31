@@ -1,0 +1,15 @@
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+xcuserdata/
+DerivedData/
+
+# Never commit credentials or signing keys
+.env
+.env.*
+*.gpg
+*.asc
+*.key
+*.pem
+*.p12

@@ -1,0 +1,15 @@
+.gradle/
+build/
+.kotlin/
+.idea/
+*.iml
+local.properties
+
+# Never commit credentials or signing keys
+.env
+.env.*
+*.gpg
+*.asc
+*.key
+*.pem
+*.p12

@@ -1,0 +1,15 @@
+{
+  "secret": "whsec_vectorsecret0123456789abcdefABCD",
+  "vectors": [
+    {
+      "payload": "{\"id\":\"evt_a1B2c3D4e5F6g7H8\",\"object\":\"event\",\"type\":\"message.sent\",\"created_at\":\"2026-10-01T12:00:00.000Z\",\"data\":{\"message_id\":\"msg_a1B2c3D4e5F6g7H8\",\"to\":\"+15005550006\",\"customer_id\":\"cus_a1B2c3D4e5F6g7\"}}",
+      "timestamp": 1790000000,
+      "signature": "t=1790000000,v1=ff81f219437ed9a2a4ba740e9531e86a63b163507d803b21259b4f89d90b29b2"
+    },
+    {
+      "payload": "{\"id\":\"evt_Z9y8X7w6V5u4T3s2\",\"object\":\"event\",\"type\":\"message.received\",\"created_at\":\"2026-10-01T12:00:01.000Z\",\"data\":{\"message_id\":\"msg_Z9y8X7w6V5u4T3s2\",\"body\":\"Café ☕ – ok? 👍\"}}",
+      "timestamp": 1790000001,
+      "signature": "t=1790000001,v1=c69323ba23767e4b9d446421593d9bed361a28ca3b52889e81f9bb8e35b4ae1a"
+    }
+  ]
+}

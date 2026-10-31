@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jointextkit"
+dynamic = ["version"]
+description = "Official Python client for TextKit (jointextkit.com): SMS, phone verification, and phone numbers. No dependencies."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [{ name = "Truelabel Inc" }]
+keywords = ["sms", "otp", "phone verification", "2fa", "twilio alternative", "sms api", "ai agents"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+  "Topic :: Communications :: Telephony",
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/jointextkit/sdk"
+Issues = "https://github.com/jointextkit/sdk/issues"
+Homepage = "https://jointextkit.com"
+Documentation = "https://jointextkit.com/docs"
+
+[tool.hatch.version]
+path = "src/jointextkit/_version.py"
+pattern = "VERSION = \"(?P<version>[^\"]+)\""
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jointextkit"]
